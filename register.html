@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gaming Rash - Register</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #050505;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .register-box {
+      width: 100%;
+      max-width: 430px;
+      padding: 35px 30px;
+      background: #111;
+      border: 1px solid red;
+      border-radius: 18px;
+      box-shadow: 0 0 30px #550000;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff2020;
+      margin-bottom: 8px;
+      text-shadow: 0 0 15px red;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      background: #050505;
+      color: white;
+      border: 1px solid #ff0000;
+      border-radius: 9px;
+      outline: none;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px red;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 9px;
+      background: red;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px red;
+    }
+
+    button:hover {
+      background: white;
+      color: red;
+    }
+
+    #message {
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    .login-link {
+      display: block;
+      margin-top: 20px;
+      color: #ff3030;
+      text-decoration: none;
+    }
+
+    .login-link:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="register-box">
+
+    <h1>🎮 Gaming Rash</h1>
+
+    <p class="subtitle">Create Your Account 🔥</p>
+
+    <form id="registerForm">
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        required
+        minlength="3">
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Email"
+        required>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        required
+        minlength="6">
+
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        minlength="6">
+
+      <button type="submit">
+        🚀 CREATE ACCOUNT
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a class="login-link" href="login.html">
+      Already have an account? 🔐 Login
+    </a>
+
+  </div>
+
+
+  <script type="module">
+
+    import {
+      auth,
+      db,
+      createUserWithEmailAndPassword,
+      doc,
+      setDoc
+    } from "./firebase.js";
+
+
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+
+
+    form.addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+      if (password !== confirmPassword) {
+
+        message.textContent =
+          "❌ Password දෙක එකම නැහැ.";
+
+        message.style.color = "red";
+
+        return;
+      }
+
+
+      try {
+
+        message.textContent =
+          "⏳ Account එක හදමින්...";
+
+        message.style.color = "orange";
+
+
+        // Create Firebase account
+        const userCredential =
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        const user =
+          userCredential.user;
+
+
+        // Save profile
+        await setDoc(
+          doc(db, "users", user.uid),
+          {
+            username: username,
+            email: email,
+            createdAt: new Date().toISOString()
+          }
+        );
+
+
+        message.textContent =
+          "✅ Account එක සාර්ථකව හැදුවා!";
+
+        message.style.color = "lime";
+
+
+        setTimeout(() => {
+
+          window.location.href =
+            "profile.html";
+
+        }, 1500);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        if (error.code === "auth/email-already-in-use") {
+
+          message.textContent =
+            "❌ මේ Email එකෙන් account එකක් දැනටමත් තියෙනවා.";
+
+        } else if (error.code === "auth/invalid-email") {
+
+          message.textContent =
+            "❌ Email එක වැරදියි.";
+
+        } else if (error.code === "auth/weak-password") {
+
+          message.textContent =
+            "❌ Password එක අවම වශයෙන් characters 6ක් විය යුතුයි.";
+
+        } else {
+
+          message.textContent =
+            "❌ Account එක හදන්න බැරි වුණා: " +
+            error.message;
+
+        }
+
+        message.style.color = "red";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
