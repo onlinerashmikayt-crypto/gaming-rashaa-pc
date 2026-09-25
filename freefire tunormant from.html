@@ -159,25 +159,5 @@ document.getElementById('ffForm').addEventListener('submit', function(e){
 <button type="submit">SUBMIT</button>
 </form>
 
-<script>
-// MEKA THAMAI INBOX EKATA SAVE VENNA CODE EKA
-document.getElementById('ffForm').addEventListener('submit', function(e){
- e.preventDefault();
- const data = new FormData(e.target);
- const newApp = {
-  team: data.get('teamName'),
-  captain: data.get('captainName'),
-  number: data.get('whatsapp'),
-  uid1: data.get('p1'),
-  time: new Date().toLocaleString()
- };
- let oldApps = JSON.parse(localStorage.getItem('my_inbox') || '[]');
- oldApps.push(newApp);
- localStorage.setItem('my_inbox', JSON.stringify(oldApps));
- alert('Application eka Inbox ekata giya!');
- e.target.reset();
-});
-</script>
- 
 </body>
 </html>
