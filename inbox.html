@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inbox - Applications</title>
+<style>
+body{background:#080808;color:white;font-family:Arial;padding:15px}
+h1{color:#FFC200;text-align:center;margin-bottom:20px}
+.card{background:#121212;border:1px solid #FFC200;padding:15px;border-radius:12px;margin-bottom:12px;line-height:1.6}
+small{color:#888}
+button{margin-top:20px;background:red;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>📥 Tournament Inbox</h1>
+<div id="list">Loading...</div>
+<button onclick="clearInbox()">🗑️ Clear All Applications</button>
+<a href="apply.html" style="display:block;margin-top:15px;color:#FFC200">← Back to Form</a>
+
+<script>
+let apps = JSON.parse(localStorage.getItem('my_inbox') || '[]');
+let list = document.getElementById('list');
+if(apps.length==0){
+ list.innerHTML="තවම Application එකක්වත් නෑ.";
+} else {
+ list.innerHTML="";
+ apps.reverse().forEach((a,i)=>{
+  list.innerHTML+=`<div class="card">
+  <b>Team:</b> ${a.team}<br>
+  <b>Region:</b> ${a.region}<br>
+  <b>Captain:</b> ${a.capName} (${a.capUID})<br>
+  <b>Phone:</b> ${a.phone}<br>
+  <b>Email:</b> ${a.email}<br>
+  <b>P2:</b> ${a.p2} | <b>P3:</b> ${a.p3} | <b>P4:</b> ${a.p4}<br>
+  <small>${a.time}</small>
+  </div>`;
+ });
+}
+function clearInbox(){
+ if(confirm('ඔක්කොම මකන්නද?')){
+  localStorage.removeItem('my_inbox');
+  location.reload();
+ }
+}
+</script>
+</body>
+</html>
