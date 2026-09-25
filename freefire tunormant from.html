@@ -147,5 +147,42 @@ document.getElementById('ffForm').addEventListener('submit', function(e){
  window.open(`https://wa.me/${MY_WA}?text=${text}`,'_blank');
 });
 </script>
+<!-- FORM EKA -->
+<form id="ffForm">
+<input name="teamName" placeholder="Team Name" required>
+<input name="captainName" placeholder="Captain Name" required>
+<input name="whatsapp" placeholder="WhatsApp Number" required>
+<input name="p1" placeholder="Player 1 UID" required>
+<input name="p2" placeholder="Player 2 UID" required>
+<input name="p3" placeholder="Player 3 UID" required>
+<input name="p4" placeholder="Player 4 UID" required>
+<button type="submit">SUBMIT</button>
+</form>
+
+<script>
+// MEKA THAMAI INBOX EKATA SAVE VENNA CODE EKA
+document.getElementById('ffForm').addEventListener('submit', function(e){
+ e.preventDefault(); // page reload vena eka nawaththanawa
+ 
+ const data = new FormData(e.target);
+ const newApp = {
+  team: data.get('teamName'),
+  captain: data.get('captainName'),
+  number: data.get('whatsapp'),
+  uid1: data.get('p1'),
+  time: new Date().toLocaleString()
+ };
+
+ // 1. Kalin thibba applications gannawa
+ let oldApps = JSON.parse(localStorage.getItem('my_inbox') || '[]');
+ // 2. Aluth eka ekathu karanawa
+ oldApps.push(newApp);
+ // 3. Aye save karanawa
+ localStorage.setItem('my_inbox', JSON.stringify(oldApps));
+
+ alert('Application eka Inbox ekata giya!');
+ e.target.reset();
+});
+</script>
 </body>
 </html>
