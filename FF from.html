@@ -1,122 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Fire • Tournament Application</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Fire • Application</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#080808;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(800px 400px at 20% -10%, #ffcc0022 0%, transparent 60%),repeating-linear-gradient(45deg, #ffffff05 0 1px, transparent 1px 60px);pointer-events:none}
-.header{background:#FFC200;display:flex;align-items:center;justify-content:space-between;padding:10px 40px;position:sticky;top:0;z-index:10}
-.logo{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#fff;letter-spacing:1px;text-shadow:2px 3px 0 #000}
-.nav{display:flex;gap:22px;font-weight:900;font-size:14px;color:#000;align-items:center}
-.nav .active{background:#000;color:#FFC200;padding:6px 16px;border-radius:20px}
-.hero{text-align:center;padding:30px 15px 10px}
-.hero h1{color:#FFC200;font-size:32px;font-weight:900;letter-spacing:1px}
-.hero p{color:#9aa0a6;font-size:13px;margin-top:8px}
-.wrap{max-width:1280px;margin:0 auto;display:flex;gap:22px;padding:22px;flex-wrap:wrap}
-.card{background:#121212;border:1px solid #2a2a2a;border-radius:18px;padding:22px;box-shadow:0 0 0 1px #ffffff08 inset}
-.left{flex:1.7;min-width:360px}
-.right{flex:0.8;min-width:300px;border-color:#FFC200;height:fit-content;position:sticky;top:80px}
-.sec{display:flex;align-items:center;gap:8px;color:#FFC200;font-weight:900;font-size:20px;margin:22px 0 12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}.wrap{padding:12px}.header{padding:10px 15px}.logo{font-size:28px}.right{position:relative;top:0}}
-label{color:#FFC200;font-size:12px;font-weight:700;margin-bottom:5px;display:block}
-.inp{width:100%;background:#232323;border:1px solid #3a3a3a;border-radius:10px;padding:11px 12px;color:#fff;font-size:13px;transition:.2s}
-.inp::placeholder{color:#666}
-.inp:focus{border-color:#FFC200;outline:none;background:#2c2c2c}
-.check{margin:18px 0;display:flex;gap:10px;font-size:11.5px;color:#ccc;line-height:1.4}
-.check input{accent-color:#FFC200;width:16px;height:16px}
-.btn{width:100%;background:#FFC200;color:#000;border:none;padding:16px;border-radius:12px;font-size:20px;font-weight:900;cursor:pointer;letter-spacing:.5px}
-.btn:hover{background:#ffe14d;transform:translateY(-1px)}
-.muted{font-size:10px;color:#777;text-align:center;margin-top:10px}
-.infoTitle{color:#FFC200;font-weight:900;font-size:18px;margin-bottom:18px;display:flex;gap:8px;align-items:center}
-.info{margin-bottom:20px;display:flex;gap:12px}
-.info b{font-size:14px;color:#fff}
-.info span{font-size:13px;color:#ddd}
-.yellow{background:#FFC200;color:#000;border-radius:12px;padding:16px;font-weight:900;font-size:14px}
-.yellow ul{margin:10px 0 0 18px;font-weight:700;font-size:12px;line-height:1.8}
-.down{margin-top:16px;border:1px solid #FFC200;color:#FFC200;text-align:center;padding:12px;border-radius:12px;font-weight:900;cursor:pointer}
-.down:hover{background:#FFC200;color:#000}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#080808;color:#fff;font-family:'Inter',sans-serif}
+.header{background:#FFC200;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;position:sticky;top:0;z-index:10}
+.logo{font-family:'Orbitron',sans-serif;font-size:30px;font-weight:900;color:#fff;text-shadow:2px 3px 0 #000}
+.wrap{max-width:800px;margin:20px auto;padding:15px}
+.card{background:#121212;border:1px solid #2a2a2a;border-radius:18px;padding:22px}
+label{color:#FFC200;font-size:12px;font-weight:700;margin-bottom:5px;display:block;margin-top:12px}
+.inp{width:100%;background:#232323;border:1px solid #3a3a3a;border-radius:10px;padding:11px 12px;color:#fff}
+.btn{width:100%;background:#FFC200;color:#000;border:none;padding:16px;border-radius:12px;font-size:18px;font-weight:900;cursor:pointer;margin-top:20px}
+.btn:disabled{background:#555}
 </style>
 </head>
 <body>
-<div class="header">
-<div class="logo">FREE FIRE</div>
-<div class="nav">
-<a href="index.html" style="color:#000;text-decoration:none"><span>HOME</span></a>
-<span class="active">APPLY</span>
-</div>
-</div>
-
-<div class="hero">
-<h1>🏆 TOURNAMENT - APPLICATION FORM</h1>
-<p>Prize Pool: rs:4000.00 • Slots: 32/64</p>
-</div>
-
+<div class="header"><div class="logo">FREE FIRE</div><a href="inbox.html" style="background:#000;color:#FFC200;padding:6px 16px;border-radius:20px;text-decoration:none;font-weight:900;font-size:12px">MY INBOX</a></div>
 <div class="wrap">
-<form class="card left" id="ffForm">
-<div class="sec">🛡️ TEAM INFORMATION</div>
-<div class="grid">
-<div><label>Team Name</label><input class="inp" name="teamName" placeholder="e.g. NIGHTWOLF ESPORTS" required></div>
-<div><label>Team Tag</label><input class="inp" name="teamTag" placeholder="[NW]" required></div>
-<div style="grid-column:1/-1"><label>Server / Region</label>
-<select class="inp" name="region" required><option value="">Select</option><option>SG REGION - Sri Lanka</option><option>Middle East</option><option>Europe</option></select></div>
-</div>
+<form class="card" id="ffForm" action="https://formsubmit.co/rashmika19941030@gmail.com" method="POST">
+<h2 style="color:#FFC200;text-align:center">🏆 TOURNAMENT APPLICATION</h2>
 
-<div class="sec">👑 CAPTAIN DETAILS</div>
-<div class="grid">
-<div><label>Captain Name</label><input class="inp" name="capName" placeholder='e.g. Alex "Viper" Tran' required></div>
-<div><label>Captain UID</label><input class="inp" name="capUID" placeholder="Enter 9-digit UID" required></div>
-<div><label>Captain Email</label><input class="inp" name="email" type="email" placeholder="captain@email.com" required></div>
-<div><label>Captain Phone / WhatsApp</label><input class="inp" name="capPhone" placeholder="+94 7X XXX XXXX" required></div>
-</div>
+<!-- FormSubmit Settings - Private Save -->
+<input type="hidden" name="_subject" value="🔥 NEW FF TOURNAMENT APPLICATION!">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://onlinerashmikayt-crypto.github.io/ga/thankyou.html">
 
-<div class="sec">👥 PLAYER DETAILS</div>
-<div class="grid">
-<div><label>Player 2 UID</label><input class="inp" name="p2" placeholder="Enter 9-digit UID" required></div>
-<div><label>Player 3 UID</label><input class="inp" name="p3" placeholder="Enter 9-digit UID" required></div>
-<div><label>Player 4 UID</label><input class="inp" name="p4" placeholder="Enter 9-digit UID" required></div>
-</div>
+<label>Team Name</label><input class="inp" name="Team Name" required>
+<label>Team Tag</label><input class="inp" name="Team Tag" required>
+<label>Region</label><select class="inp" name="Region" required><option value="">Select</option><option>SG - Sri Lanka</option><option>Middle East</option></select>
+<label>Captain Name</label><input class="inp" name="Captain Name" required>
+<label>Captain UID</label><input class="inp" name="Captain UID" required>
+<label>Captain Phone</label><input class="inp" name="Captain Phone" required>
+<label>Captain Email</label><input class="inp" name="Captain Email" type="email" required>
+<label>Player 2 UID</label><input class="inp" name="Player 2 UID" required>
+<label>Player 3 UID</label><input class="inp" name="Player 3 UID" required>
+<label>Player 4 UID</label><input class="inp" name="Player 4 UID" required>
 
-<label class="check"><input type="checkbox" required><span>I agree to the Tournament Rules.</span></label>
-<button class="btn" type="submit">SUBMIT APPLICATION →</button>
-<p class="muted">Inbox එකට Save වෙනවා - WhatsApp නෙවෙයි</p>
+<button class="btn" id="submitBtn" type="submit">SUBMIT APPLICATION →</button>
+<p style="font-size:10px;color:#888;text-align:center;margin-top:10px">Private - Only owner can see in Email</p>
 </form>
-
-<div class="card right">
-<div class="infoTitle">ⓘ TOURNAMENT INFO</div>
-<div class="yellow">REQUIREMENTS:<ul><li>Level 40+</li><li>Same region only</li></ul></div>
-<a href="inbox.html" style="text-decoration:none"><div class="down">📥 OPEN INBOX</div></a>
-</div>
 </div>
 
-<!-- ========= HARI SCRIPT EKA MEKA ========= -->
 <script>
-document.getElementById('ffForm').addEventListener('submit', function(e){
- e.preventDefault();
+// Local backup එකටත් save වෙනවා (ඔයාට විතරක් inbox eke penna)
+document.getElementById('ffForm').addEventListener('submit', function(){
  const d = new FormData(this);
  const newApp = {
-  team: d.get('teamName') + ' ' + d.get('teamTag'),
-  region: d.get('region'),
-  capName: d.get('capName'),
-  capUID: d.get('capUID'),
-  email: d.get('email'),
-  phone: d.get('capPhone'),
-  p2: d.get('p2'),
-  p3: d.get('p3'),
-  p4: d.get('p4'),
+  team: d.get('Team Name')+' '+d.get('Team Tag'),
+  capName: d.get('Captain Name'),
+  phone: d.get('Captain Phone'),
+  email: d.get('Captain Email'),
   time: new Date().toLocaleString()
  };
  let oldApps = JSON.parse(localStorage.getItem('my_inbox') || '[]');
  oldApps.push(newApp);
  localStorage.setItem('my_inbox', JSON.stringify(oldApps));
- alert('✅ Application Inbox එකට ගියා!');
- window.location.href = 'inbox.html';
+ document.getElementById('submitBtn').innerText = "SENDING...";
 });
 </script>
-
 </body>
 </html>
