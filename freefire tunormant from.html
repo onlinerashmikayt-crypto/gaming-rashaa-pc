@@ -162,8 +162,7 @@ document.getElementById('ffForm').addEventListener('submit', function(e){
 <script>
 // MEKA THAMAI INBOX EKATA SAVE VENNA CODE EKA
 document.getElementById('ffForm').addEventListener('submit', function(e){
- e.preventDefault(); // page reload vena eka nawaththanawa
- 
+ e.preventDefault();
  const data = new FormData(e.target);
  const newApp = {
   team: data.get('teamName'),
@@ -172,17 +171,13 @@ document.getElementById('ffForm').addEventListener('submit', function(e){
   uid1: data.get('p1'),
   time: new Date().toLocaleString()
  };
-
- // 1. Kalin thibba applications gannawa
  let oldApps = JSON.parse(localStorage.getItem('my_inbox') || '[]');
- // 2. Aluth eka ekathu karanawa
  oldApps.push(newApp);
- // 3. Aye save karanawa
  localStorage.setItem('my_inbox', JSON.stringify(oldApps));
-
  alert('Application eka Inbox ekata giya!');
  e.target.reset();
 });
 </script>
+ 
 </body>
 </html>
