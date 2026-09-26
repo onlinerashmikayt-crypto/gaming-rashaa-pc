@@ -169,6 +169,14 @@
       }
     }
   </style>
+
+  <script>
+// Login වෙලා නැත්තං Login Page එකට යවනවා
+if(localStorage.getItem('isLogged') !== 'true'){
+  window.location.href = "login1.html";
+}
+</script>
+
 </head>
 
 <body>
