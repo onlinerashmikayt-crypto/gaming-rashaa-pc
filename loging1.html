@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Gaming Rashaa</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080808;color:#fff;font-family:'Inter',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.card{background:#121212;border:2px solid #FFC200;padding:25px;border-radius:18px;width:100%;max-width:380px;box-shadow:0 0 20px #FFC20033}
+.logo{font-family:'Orbitron',sans-serif;color:#FFC200;font-size:28px;text-align:center;font-weight:900}
+.sub{color:#888;text-align:center;font-size:12px;margin:15px 0}
+.inp{width:100%;padding:13px;border-radius:10px;border:1px solid #333;background:#222;color:#fff;margin-top:10px;font-size:14px;outline:none}
+.inp:focus{border-color:#FFC200}
+.btn{width:100%;padding:14px;background:#FFC200;border:none;border-radius:10px;font-weight:900;font-size:16px;color:#000;margin-top:20px;cursor:pointer}
+.link{color:#FFC200;text-align:center;display:block;margin-top:15px;font-size:13px;text-decoration:none}
+.err{color:#ff4444;text-align:center;font-size:12px;margin-top:10px;display:none;background:#ff444422;padding:8px;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">FREE FIRE</div>
+<p class="sub">Gaming Rashaa YT - TOURNAMENT LOGIN</p>
+
+<input class="inp" type="email" id="log_email" placeholder="Gmail Address">
+<input class="inp" type="password" id="log_pass" placeholder="Password">
+
+<div id="errorMsg" class="err">Gmail හෝ Password වැරදියි!</div>
+
+<button class="btn" onclick="login()">LOGIN →</button>
+
+<a class="link" href="register1.html">No Account? Register Here</a>
+</div>
+
+<script>
+function login(){
+  let savedEmail = localStorage.getItem('user_email');
+  let savedPass = localStorage.getItem('user_pass');
+  let enteredEmail = document.getElementById('log_email').value.trim();
+  let enteredPass = document.getElementById('log_pass').value.trim();
+
+  if(!savedEmail){
+    alert('ඔයා තාම Register වෙලා නෑ! මුලින් Register වෙන්න.');
+    window.location.href = "register1.html";
+    return;
+  }
+
+  if(enteredEmail === savedEmail && enteredPass === savedPass){
+    localStorage.setItem('isLogged', 'true');
+    window.location.href = "index.html";
+  } else {
+    document.getElementById('errorMsg').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
